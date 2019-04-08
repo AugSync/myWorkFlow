@@ -1,0 +1,25 @@
+{
+  "name": "gulp.augusto",
+  "version": "1.0.0",
+  "description": "Primera prueba",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@Augusto",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-imagemin-fix": "^5.0.4",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.1",
+    "gulp-watch": "^5.0.1",
+    "pump": "^3.0.0"
+  },
+  "dependencies": {
+    "gulp-htmlmin": "^5.0.1"
+  }
+}
