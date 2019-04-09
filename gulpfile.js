@@ -1,7 +1,7 @@
 var gulp = require("gulp");
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
-var uglify = require('gulp-uglify');
+const minify = require('gulp-minify');
 var imagemin = require('gulp-imagemin-fix');
 var cssnano = require('gulp-cssnano');
 var pump = require('pump');
@@ -16,7 +16,7 @@ gulp.task('serve', ['css', 'javascript'], function() {
     });
 
     gulp.watch('./*.html', ['minificar']);
-    gulp.watch('app/js/*.js', ['javascript']).on('change', browserSync.reload);
+    gulp.watch('./js/*.js', ['javascript']).on('change', browserSync.reload);
     gulp.watch("scss/**/*.scss", ['css']);
     gulp.watch("app/*.html").on('change', browserSync.reload);
 });
@@ -33,15 +33,11 @@ gulp.task('css', function() {
         .pipe(browserSync.stream());
 });
 
-gulp.task('javascript', function (cb) {
-    pump([
-          gulp.src('./app/js/*.js'),
-          uglify(),
-          gulp.dest('./app/js/dist')
-      ],
-      cb
-    );
-  });
+gulp.task('javascript', function() {
+  gulp.src('./js/*.js')
+    .pipe(minify())
+    .pipe(gulp.dest('./app/js'))
+});
 
   gulp.task('optimizar', () =>
     gulp.src('img/*')
